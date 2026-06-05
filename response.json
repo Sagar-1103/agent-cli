@@ -1,0 +1,48 @@
+{
+    "sdkHttpResponse": {
+        "headers": {
+            "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+            "content-encoding": "gzip",
+            "content-type": "application/json; charset=UTF-8",
+            "date": "Fri, 05 Jun 2026 20:11:33 GMT",
+            "server": "scaffolding on HTTPServer2",
+            "server-timing": "gfet4t7; dur=1988",
+            "transfer-encoding": "chunked",
+            "vary": "Origin, X-Origin, Referer",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-gemini-service-tier": "standard",
+            "x-xss-protection": "0"
+        }
+    },
+    "candidates": [
+        {
+            "content": {
+                "parts": [
+                    {
+                        "text": "All CORS-related code has been removed from the file.",
+                        "thoughtSignature": "CtkCAQw51sfZUcQW/DKCw7swBYfF+NIjr2jYpxeT00KzwlaZVzvJNzyF2QsQPO+94trfcZXwBbSZF3PO8W9WC+DwGUMwSA27q86z3GGvZvjeutMQHIRoipk2wN7HGgprwvWbixsigsYC6t/OfV34e5AuHkZ6z0bB6sJS5+F4gUPlIPhB8PuawRqw1holGfF845oLAzceSqXP8bf8PdR0yAFQIMP1m51UHFT390ZZeMjHtUO4aeeGFJTTQyPDMiRMiGb0v4e5tyWDq5WtjsE2jzg5wFFO2cUbGWeP8LcVvOt6pTdJZiQkcbckWEaKhhQ3oyQL/EahZhPaUjCYldFbOZ4spO//vwVe3sAM7nZ4dKyunUhMKJ0NuLeXOdcTdDxsngdu+HOwq47ZEO3FzQeohqObsfiPl06gS7FzmFPJuqWKlyskKsT7YbLOeddgqXptF4rhLVQyigd2q1LU"
+                    }
+                ],
+                "role": "model"
+            },
+            "finishReason": "STOP",
+            "index": 0
+        }
+    ],
+    "modelVersion": "gemini-2.5-flash",
+    "responseId": "cy0jar_zMsSG4-EPpNiTGA",
+    "usageMetadata": {
+        "promptTokenCount": 1867,
+        "candidatesTokenCount": 12,
+        "totalTokenCount": 1944,
+        "promptTokensDetails": [
+            {
+                "modality": "TEXT",
+                "tokenCount": 1867
+            }
+        ],
+        "thoughtsTokenCount": 65,
+        "serviceTier": "standard"
+    }
+}

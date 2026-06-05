@@ -5,7 +5,7 @@ import { providerCommand } from './src/commands/providers';
 
 
 program
-  .name('opencode')
+  .name('Agent CLI')
   .description('Coding agent cli')
   .version('0.1.0')
   .addCommand(modelsCommand)

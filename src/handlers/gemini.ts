@@ -1,9 +1,9 @@
-import {GoogleGenAI} from '@google/genai';
+import { GoogleGenAI, type GenerateContentConfig } from '@google/genai';
 
 export class Gemini {
-    model:GoogleGenAI;
-    constructor(_apiKey:string) {
-        this.model= new GoogleGenAI({apiKey: _apiKey});
+    model: GoogleGenAI;
+    constructor(_apiKey: string) {
+        this.model = new GoogleGenAI({ apiKey: _apiKey });
     }
 
     async getModels() {
@@ -11,15 +11,12 @@ export class Gemini {
         return models;
     }
 
-    async generateContent(prompt:string) {
-    console.log(2);
-    
-    const response = await this.model.models.generateContent({
-        model: "gemini-2.5-flash",
-        contents: prompt,
-    });
-    console.log(3);
-    console.log(response.text,"asd");
-    console.log(4);
+    async generateContent(data: string, config: GenerateContentConfig) {
+        const response = await this.model.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: data,
+            config
+        });
+        return response;
     }
 }

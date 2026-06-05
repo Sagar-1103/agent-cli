@@ -1,11 +1,11 @@
-import { GoogleGenAI } from "@google/genai";
 import { providersPath } from "../utils/constants";
 import type { Message, Provider } from "../utils/types";
 import { Gemini } from "./gemini";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 import { toolSchemas } from "../utils/tools/tool-util";
-import fs from "fs";
 import { getSystemPrompt } from "../utils/system-prompt";
+import dotenv from "dotenv";
+dotenv.config();
 
 export async function addModelsByProvider(provider: Provider) {
     if (provider.name === "gemini") {
@@ -36,13 +36,12 @@ export async function addModelsByProvider(provider: Provider) {
 export async function sendMessage(prompt: string, memory: Message[], dir?: string) {
 
     // assuming default provider as gemini-2.5-flash
-    const ai = new GoogleGenAI({ apiKey: "AIzaSyAGkb2kp38nyB71XIYF2JfukkkLj1rIICg" });
+    const gemini = new Gemini(process.env.API_KEY!);
 
-    const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
-        contents: `${memory.length && `Memory:${JSON.stringify(memory)}, `}System Prompt:${getSystemPrompt(dir)} User Prompt:${prompt}`,
-        config: { tools: toolSchemas },
-    });
+    const response = await gemini.generateContent(
+        `${memory.length && `Memory:${JSON.stringify(memory)}, `}System Prompt:${getSystemPrompt(dir)} User Prompt:${prompt}`,
+        { tools: toolSchemas },
+    );
 
     return response;
 }

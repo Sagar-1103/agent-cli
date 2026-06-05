@@ -46,24 +46,26 @@ export const tools: Tool[] = [
             return `Completed writing ${content} in ${path}`;
         },
     },
-    // {
-    //     name: "list_files",
-    //     description: "List all the files in the given directory",
-    //     parameters: {
-    //         type: "object",
-    //         properties: {
-    //             path: { type: "string" },
-    //         },
-    //         required: ["path"]
-    //     },
-    //     execute(args) {
-    //         const path = args.path as PathLike;
+    {
+        name: "list_files",
+        description: "List all the files in the given directory",
+        parameters: {
+            type: "object",
+            properties: {
+                path: { type: "string" },
+            },
+            required: ["path"]
+        },
+        execute(args) {
+            const path = args.path as PathLike;
 
-    //         const directoryExists = fs.existsSync(path);
+            const directoryExists = fs.existsSync(path);
 
-    //         if (!directoryExists) {
-    //             return `Path: ${path} doesnt exist`;
-    //         }
-    //     },
-    // }
+            if (!directoryExists) {
+                return `Path: ${path} doesnt exist`;
+            } else {
+                return fs.readdirSync(path).join("\n");
+            }
+        },
+    }
 ];

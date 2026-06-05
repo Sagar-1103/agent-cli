@@ -10,28 +10,28 @@ export const loginCommand = new Command("login")
     .description('Lets user login into the provider (use it as default)')
     .option('-p, --provider <providerName>', 'Name of the provider (gemini, claude etc)', '')
     .option('-a, --api_key <apiKey>', 'Your api key', '')
-    .action(async(options) => {
+    .action(async (options) => {
         const { provider, api_key } = options;
-        let providers:Provider[] = [];
+        let providers: Provider[] = [];
 
         const providerFileExists = existsSync(providersPath);
-        
+
         if (!providerFileExists) {
-            const data = {name:provider,apiKey:api_key,models:[]};
+            const data = { name: provider, apiKey: api_key, models: [] };
             providers.push(data);
-            writeFile(providersPath,JSON.stringify(providers),async()=>{
+            writeFile(providersPath, JSON.stringify(providers, null, 2), async () => {
                 await addModelsByProvider(data);
                 console.log(`${provider} provider logged in`);
             });
 
         } else {
-            readFile(providersPath,"utf8",async(err,response)=>{
+            readFile(providersPath, "utf8", async (err, response) => {
                 providers = JSON.parse(response);
-                const doesProviderExists = providers.find(p=>p.name===provider);
+                const doesProviderExists = providers.find(p => p.name === provider);
                 if (!doesProviderExists) {
-                    const data = {name:provider,apiKey:api_key,models:[]};
+                    const data = { name: provider, apiKey: api_key, models: [] };
                     providers.push(data);
-                    writeFile(providersPath,JSON.stringify(providers),async()=>{
+                    writeFile(providersPath, JSON.stringify(providers, null, 2), async () => {
                         await addModelsByProvider(data);
                         console.log(`${provider} provider logged in`);
                     });
